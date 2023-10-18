@@ -1,2 +1,0 @@
-how to initialize a map
-// var m map[K]V
