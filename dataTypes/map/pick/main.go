@@ -9,6 +9,6 @@ func main() {
 		"orange": 8,
 	}
 	fmt.Println(fruits["apple"])
-	fruit["apple"] = 8
+	fruits["apple"] = 8
 	fmt.Println(fruits["apple"])
 }
