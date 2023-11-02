@@ -9,7 +9,7 @@ func main() {
 		"orange": 3,
 	}
 
-	for i, v := range fruits {
-		fmt.Printf("Key : %v, Value : %v\n", i, v)
+	for key, value := range fruits {
+		fmt.Printf("Key : %v, Value : %v\n", key, value)
 	}
 }
