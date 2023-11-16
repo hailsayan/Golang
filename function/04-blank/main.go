@@ -7,6 +7,6 @@ func returnTwoString() (string, string) {
 }
 
 func main() {
-	hello, - := returnTwoString()
+	hello, _ := returnTwoString()
 	fmt.Println(hello)
 }
