@@ -7,5 +7,5 @@ func main() {
 		return fmt.Sprintf("your name : %s", name)
 	}
 
-	fmt.Println(printname("Psyon"))
+	fmt.Println(printName("Psyon"))
 }
