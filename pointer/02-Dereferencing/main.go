@@ -8,4 +8,7 @@ func main() {
 
 	fmt.Println(P)
 	fmt.Println(*P)
+
+	*P = 3.14159
+	fmt.Println(pi)
 }
