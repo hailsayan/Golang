@@ -24,4 +24,7 @@ func main() {
 		age:       20,
 	}
 	fmt.Printf("%+v\n", s3)
+
+	var s4 = Student{"psyon", "...", 20}
+	fmt.Printf("%+v\n", s4)
 }
