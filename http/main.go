@@ -25,11 +25,21 @@ func allProducts(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(sampleProducts)
+
+	headers := r.Header
+	fmt.Println("Request Headers:")
+	for key, values := range headers {
+		fmt.Printf("%s: %v\n", key, values)
+	}
+	method := r.Method
+	path := r.URL.Path
+	fmt.Printf("HTTP Method: %s\n", method)
+	fmt.Printf("Path: %s\n", path)
 }
 func main() {
 	http.HandleFunc("/welcome", welcomePage)
 	http.HandleFunc("/products", allProducts)
-	err := http.ListenAndServe(":8000", nil)
+	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		fmt.Println("Error:", err)
 	}
