@@ -22,7 +22,7 @@ func main() {
 	}
 
 	var res Response
-	if err != nil {
+	if err := response.Unmarshal(&res); err != nil {
 		log.Fatalf("error: %v", err)
 	}
 	fmt.Printf("%+v\n", res)
