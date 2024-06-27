@@ -10,6 +10,7 @@ import (
 func main() {
 	http.HandleFunc("/hello", handleHelloWorld)
 	http.HandleFunc("/getProduct/", getProduct)
+	http.HandleFunc("/addProduct", addProduct)
 	http.ListenAndServe(":8080", nil)
 }
 
@@ -38,4 +39,20 @@ func getProduct(w http.ResponseWriter, r *http.Request) {
 
 	productID := parts[2]
 	fmt.Fprintf(w, "Product ID: %s\n", productID)
+}
+
+func addProduct(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Only POST requests are allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var newProduct Product
+	err := json.NewDecoder(r.Body).Decode(&newProduct)
+	if err != nil {
+		http.Error(w, "Failed to parse the request body", http.StatusBadRequest)
+		return
+	}
+
+	fmt.Fprintf(w, "Product added successfully:\n%+v\n", newProduct)
 }
