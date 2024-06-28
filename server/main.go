@@ -7,16 +7,23 @@ import (
 	"strings"
 )
 
+type Product struct {
+	ID    int     `json:"ID"`
+	Name  string  `json:"Name"`
+	Price float64 `json:"Price"`
+	Count int     `json:"Count"`
+}
+
 func main() {
-	http.HandleFunc("/hello", handleHelloWorld)
-	http.HandleFunc("/getProduct/", getProduct)
-	http.HandleFunc("/addProduct", addProduct)
+	http.HandleFunc("/sayHelloWorld", handleHelloWorld)
+	http.HandleFunc("/get-product/", getProduct)
+	http.HandleFunc("/add-product", addProduct)
 	http.ListenAndServe(":8080", nil)
 }
 
 func handleHelloWorld(w http.ResponseWriter, r *http.Request) {
 	response := map[string]interface{}{
-		"message": "hello world",
+		"message": "Hello, world!",
 		"status":  "success",
 	}
 
@@ -38,7 +45,7 @@ func getProduct(w http.ResponseWriter, r *http.Request) {
 	}
 
 	productID := parts[2]
-	fmt.Fprintf(w, "Product ID: %s\n", productID)
+	fmt.Fprintf(w, "Requested product ID: %s\n", productID)
 }
 
 func addProduct(w http.ResponseWriter, r *http.Request) {

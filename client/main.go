@@ -14,7 +14,7 @@ type Response struct {
 }
 
 func main() {
-	client := gohttpclient.New("http://localhost:8080/hello")
+	client := gohttpclient.New("http://localhost:8080/sayHelloWorld")
 
 	response, err := client.Get(context.Background(), "")
 	if err != nil {
@@ -25,5 +25,6 @@ func main() {
 	if err := response.Unmarshal(&res); err != nil {
 		log.Fatalf("error: %v", err)
 	}
+
 	fmt.Printf("%+v\n", res)
 }
